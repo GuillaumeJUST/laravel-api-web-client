@@ -18,3 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(array('prefix' => 'servers'), function()
+{
+    Route::get('{server}/delete', 'ServerController@delete');
+});
+Route::resource('servers', 'ServerController');
