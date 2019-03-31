@@ -51,18 +51,19 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-
         if (!$request->wantsJson()) {
             return parent::render($request, $exception);
         }
 
         $errors = [];
         $status = 500;
+        $message = $exception->getMessage();
         if ($exception->getMessage() instanceof MethodNotAllowedHttpException) {
             $status = 405;
         } elseif ($exception instanceof NotFoundHttpException) {
             $status = 404;
         } elseif ($exception instanceof ModelNotFoundException) {
+            $message = 'Data not found';
             $status = 404;
         } elseif ($exception instanceof AuthorizationException) {
             $status = 403;
@@ -71,10 +72,11 @@ class Handler extends ExceptionHandler
             $errors = $exception->errors();
         }
 
+
         $responseData = [
             'success' => false,
             'status' => $status,
-            'message' => $exception->getMessage(),
+            'message' => $message,
             'errors' => $errors,
         ];
 

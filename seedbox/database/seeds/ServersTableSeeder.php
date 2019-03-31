@@ -1,9 +1,7 @@
 <?php
 
 use App\Server;
-use App\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 
 class ServersTableSeeder extends Seeder
 {
@@ -18,38 +16,14 @@ class ServersTableSeeder extends Seeder
 
         Server::create([
             'name' => 'Server seedbox 1',
-            'url' => 'www.seedbox.org',
-            'status' => Server::STATUS_UP,
+            'url' => 'https://www.seedbox.com',
+            'status' => Server::STATUS_NEW,
         ]);
 
         Server::create([
             'name' => 'Server seedbox 2',
-            'url' => 'www.seedbox.org',
+            'url' => 'https://www.seedbox.com',
             'status' => Server::STATUS_UP,
-        ]);
-
-        Server::create([
-            'name' => 'Server seedbox 3',
-            'url' => 'www.seedbox.org',
-            'status' => Server::STATUS_WARNING,
-        ]);
-
-        Server::create([
-            'name' => 'Server seedbox 4',
-            'url' => 'www.seedbox.org',
-            'status' => Server::STATUS_UP,
-        ]);
-
-        Server::create([
-            'name' => 'Server seedbox 5',
-            'url' => 'www.seedbox.org',
-            'status' => Server::STATUS_UP,
-        ]);
-
-        Server::create([
-            'name' => 'Server seedbox 6',
-            'url' => 'www.seedbox.org',
-            'status' => Server::STATUS_DOWN,
         ]);
     }
 }

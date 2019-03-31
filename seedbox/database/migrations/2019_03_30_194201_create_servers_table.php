@@ -18,7 +18,7 @@ class CreateServersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('url');
-            $table->enum('status', Server::STATUS)->default(Server::STATUS_WARNING);
+            $table->enum('status', Server::STATUS)->default(Server::STATUS_NEW);
             $table->softDeletes();
             $table->timestamps();
         });

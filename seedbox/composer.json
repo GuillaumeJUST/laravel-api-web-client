@@ -70,7 +70,8 @@
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
             "@php -r \"file_exists('.env.testing') || copy('.env.example', '.env.testing');\"",
             "php artisan key:generate",
-            "php artisan migrate:install"
+            "php artisan migrate:install",
+            "npm run dev"
         ],
         "init-data" : [
             "php artisan migrate",

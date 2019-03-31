@@ -24,7 +24,7 @@ class ServerRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:200|unique:servers,name'. $this->request->get('id'),
+            'name' => 'required|string|max:50',
             'url' => 'required|string|url',
         ];
     }

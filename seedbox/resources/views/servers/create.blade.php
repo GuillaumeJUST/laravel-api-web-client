@@ -2,22 +2,26 @@
 
 @section('content')
     <div class="container">
-        <!-- if there are creation errors, they will show here -->
-        {{ HTML::ul($errors->all()) }}
 
         {{ Form::open(array('url' => 'servers')) }}
 
         <div class="form-group">
             {{ Form::label('name', 'Name') }}
             {{ Form::text('name', Input::old('name'), array('class' => 'form-control')) }}
+            @if ($errors->has('name'))
+                <div class="error text-danger">{{ $errors->first('name') }}</div>
+            @endif
         </div>
 
         <div class="form-group">
             {{ Form::label('url', 'Url') }}
             {{ Form::url('url', Input::old('url'), array('class' => 'form-control', 'placeholder' => 'http://www.google.fr')) }}
+            @if ($errors->has('url'))
+                <div class="error text-danger">{{ $errors->first('url') }}</div>
+            @endif
         </div>
 
-        <a href="{{ URL::previous() }}" class="btn btn-danger">Cancel</a>
+        <a href="{{ URL::to('servers') }}" class="btn btn-danger">Cancel</a>
         {{ Form::submit('Create the Server!', array('class' => 'btn btn-primary')) }}
 
         {{ Form::close() }}

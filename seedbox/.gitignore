@@ -10,6 +10,6 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 .env.*
-!/.env.example# Created by .ignore support plugin (hsz.mobi)
 /composer.lock
 /package-lock.json
+!/.env.example

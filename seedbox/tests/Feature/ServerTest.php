@@ -55,7 +55,7 @@ class ServerTest extends TestCase
             ->assertStatus(200)
             ->assertJson([
                 'name' => $serverData['name'],
-                'code' => $serverData['code'],
+                'url' => $serverData['url'],
             ]);
     }
 
@@ -82,7 +82,7 @@ class ServerTest extends TestCase
                 [ 'name' => $server3->name, 'url' => $server3->url]
             ]])
             ->assertJsonStructure(['data' => [
-                '*' => ['id', 'name', 'url', 'status', 'created_at', 'updated_at', 'created_by', 'deleted_at'],
+                '*' => ['id', 'name', 'url', 'status', 'created_at', 'updated_at', 'deleted_at'],
             ]]);
     }
 }

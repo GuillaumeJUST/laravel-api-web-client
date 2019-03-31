@@ -25,6 +25,14 @@ Route::group([
 
     $router->group(['middleware' => 'auth:api'], function ($router) {
         $router->post('logout', 'Auth\LoginController@logoutApi');
+
+        $router->group(['prefix' => 'servers'], function ($router) {
+            $router->get('', 'Api\ServerController@index');
+            $router->get('/{server}', 'Api\ServerController@show');
+            $router->post('', 'Api\ServerController@store');
+            $router->put('/{server}', 'Api\ServerController@update');
+            $router->delete('/{server}', 'Api\ServerController@delete');
+        });
     });
 });
 

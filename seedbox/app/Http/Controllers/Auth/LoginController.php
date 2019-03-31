@@ -115,7 +115,7 @@ class LoginController extends Controller
      *     )
      * )
      */
-    public function logoutApi(Request $request)
+    public function logoutApi()
     {
         $user = Auth::guard('api')->user();
 

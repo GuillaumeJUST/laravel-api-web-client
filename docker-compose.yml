@@ -41,7 +41,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: 123456
-      MYSQL_DATABASE: seedbox
+      MYSQL_DATABASE: server_manager
       MYSQL_USER: seedbox-web
       MYSQL_PASSWORD: 123456
     volumes:

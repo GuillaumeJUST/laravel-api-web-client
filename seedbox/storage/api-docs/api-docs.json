@@ -1,8 +1,8 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Trip Builder API",
-        "description": "Simple trip builder api",
+        "title": "Manager API",
+        "description": "Simple api",
         "version": "1.0.0"
     },
     "servers": [
@@ -12,14 +12,14 @@
         }
     ],
     "paths": {
-        "/airlines": {
+        "/servers": {
             "get": {
                 "tags": [
-                    "Airlines"
+                    "Servers"
                 ],
-                "summary": "Get list of airlines",
-                "description": "Returns list of airlines",
-                "operationId": "getAirlinesList",
+                "summary": "Get list of servers",
+                "description": "Returns list of servers",
+                "operationId": "getServersList",
                 "responses": {
                     "200": {
                         "description": "successful operation",
@@ -32,22 +32,27 @@
                     "400": {
                         "description": "Bad request"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
-                    "Airlines"
+                    "Servers"
                 ],
-                "summary": "Store airline",
-                "description": "Create new airline",
-                "operationId": "postAirline",
+                "summary": "Store server",
+                "description": "Create new server",
+                "operationId": "postServer",
                 "requestBody": {
-                    "description": "airline object",
+                    "description": "server object",
                     "required": true,
                     "content": {
                         "application/x-www-form-urlencoded": {
                             "schema": {
-                                "$ref": "#/components/schemas/Airline"
+                                "$ref": "#/components/schemas/Server"
                             }
                         }
                     }
@@ -72,19 +77,19 @@
                 ]
             }
         },
-        "/airlines/{airline}": {
+        "/servers/{server}": {
             "get": {
                 "tags": [
-                    "Airlines"
+                    "Servers"
                 ],
-                "summary": "Get airline information",
-                "description": "Returns airline data",
-                "operationId": "getAirlineById",
+                "summary": "Get server information",
+                "description": "Returns server data",
+                "operationId": "getServerById",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "Airline id",
+                        "description": "Server id",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -103,20 +108,25 @@
                     "400": {
                         "description": "Bad request"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ]
             },
             "put": {
                 "tags": [
-                    "Airlines"
+                    "Servers"
                 ],
-                "summary": "Update airline",
-                "description": "update an airline",
-                "operationId": "putAirline",
+                "summary": "Update server",
+                "description": "update an server",
+                "operationId": "putServer",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "Airline id",
+                        "description": "Server id",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -124,12 +134,12 @@
                     }
                 ],
                 "requestBody": {
-                    "description": "airline object",
+                    "description": "server object",
                     "required": true,
                     "content": {
                         "multipart/form-data": {
                             "schema": {
-                                "$ref": "#/components/schemas/Airline"
+                                "$ref": "#/components/schemas/Server"
                             }
                         }
                     }
@@ -155,195 +165,16 @@
             },
             "delete": {
                 "tags": [
-                    "Airlines"
+                    "Servers"
                 ],
-                "summary": "Delete airline",
-                "description": "delete an airline",
-                "operationId": "deleteAirline",
+                "summary": "Delete server",
+                "description": "delete an server",
+                "operationId": "deleteServer",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "Airline id",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    }
-                },
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ]
-            }
-        },
-        "/airports": {
-            "get": {
-                "tags": [
-                    "Airports"
-                ],
-                "summary": "Get list of airports",
-                "description": "Returns list of airports",
-                "operationId": "getAirportsList",
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "Airports"
-                ],
-                "summary": "Store airport",
-                "description": "Create new airport",
-                "operationId": "postAirport",
-                "requestBody": {
-                    "description": "Airport object",
-                    "required": true,
-                    "content": {
-                        "multipart/form-data": {
-                            "schema": {
-                                "$ref": "#/components/schemas/Airport"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    }
-                },
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ]
-            }
-        },
-        "/airports/{airport}": {
-            "get": {
-                "tags": [
-                    "Airports"
-                ],
-                "summary": "Get airport information",
-                "description": "Returns airport data",
-                "operationId": "getAirportById",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Airport id",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "Airports"
-                ],
-                "summary": "Update airport",
-                "description": "update an airport",
-                "operationId": "putAirport",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Airport id",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "description": "Airport object",
-                    "required": true,
-                    "content": {
-                        "multipart/form-data": {
-                            "schema": {
-                                "$ref": "#/components/schemas/Airport"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    }
-                },
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ]
-            },
-            "delete": {
-                "tags": [
-                    "Airports"
-                ],
-                "summary": "Delete airport",
-                "description": "delete an airport",
-                "operationId": "deleteAirport",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Airport id",
+                        "description": "Server id",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -434,816 +265,11 @@
                     }
                 ]
             }
-        },
-        "/cities": {
-            "get": {
-                "tags": [
-                    "Cities"
-                ],
-                "summary": "Get list of cities",
-                "description": "Returns list of cities",
-                "operationId": "getCitiesList",
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "Cities"
-                ],
-                "summary": "Store city",
-                "description": "Create new city",
-                "operationId": "postCity",
-                "requestBody": {
-                    "description": "City object",
-                    "required": true,
-                    "content": {
-                        "multipart/form-data": {
-                            "schema": {
-                                "$ref": "#/components/schemas/City"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    }
-                },
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ]
-            }
-        },
-        "/cities/{city}": {
-            "get": {
-                "tags": [
-                    "Cities"
-                ],
-                "summary": "Get city information",
-                "description": "Returns city data",
-                "operationId": "getCityById",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "City id",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "Cities"
-                ],
-                "summary": "Update city",
-                "description": "update an city",
-                "operationId": "putCity",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "City id",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "description": "City object",
-                    "required": true,
-                    "content": {
-                        "multipart/form-data": {
-                            "schema": {
-                                "$ref": "#/components/schemas/City"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    }
-                },
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ]
-            },
-            "delete": {
-                "tags": [
-                    "Cities"
-                ],
-                "summary": "Delete city",
-                "description": "delete an city",
-                "operationId": "deleteCity",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "City id",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    }
-                },
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ]
-            }
-        },
-        "/countries": {
-            "get": {
-                "tags": [
-                    "Countries"
-                ],
-                "summary": "Get list of countries",
-                "description": "Returns list of countries",
-                "operationId": "getCountriesList",
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "Countries"
-                ],
-                "summary": "Store country",
-                "description": "Create new country",
-                "operationId": "postCountry",
-                "requestBody": {
-                    "description": "Country object",
-                    "required": true,
-                    "content": {
-                        "multipart/form-data": {
-                            "schema": {
-                                "$ref": "#/components/schemas/Country"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    }
-                },
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ]
-            }
-        },
-        "/countries/{country}": {
-            "get": {
-                "tags": [
-                    "Countries"
-                ],
-                "summary": "Get country information",
-                "description": "Returns country data",
-                "operationId": "getCountryById",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Country id",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "Countries"
-                ],
-                "summary": "Update country",
-                "description": "update an country",
-                "operationId": "putCountry",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Country id",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "description": "Country object",
-                    "required": true,
-                    "content": {
-                        "multipart/form-data": {
-                            "schema": {
-                                "$ref": "#/components/schemas/Country"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    }
-                },
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ]
-            },
-            "delete": {
-                "tags": [
-                    "Countries"
-                ],
-                "summary": "Delete country",
-                "description": "delete an country",
-                "operationId": "deleteCountry",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Country id",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    }
-                },
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ]
-            }
-        },
-        "/flights": {
-            "get": {
-                "tags": [
-                    "Flights"
-                ],
-                "summary": "Get list of flights",
-                "description": "Returns list of flights",
-                "operationId": "getFlightsList",
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "Flights"
-                ],
-                "summary": "Store flight",
-                "description": "Create new flight",
-                "operationId": "postFlight",
-                "requestBody": {
-                    "description": "Flight object",
-                    "required": true,
-                    "content": {
-                        "multipart/form-data": {
-                            "schema": {
-                                "$ref": "#/components/schemas/Flight"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    }
-                },
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ]
-            }
-        },
-        "/flights/{flight}": {
-            "get": {
-                "tags": [
-                    "Flights"
-                ],
-                "summary": "Get flight information",
-                "description": "Returns flight data",
-                "operationId": "getFlightById",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Flight id",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "Flights"
-                ],
-                "summary": "Update flight",
-                "description": "update an flight",
-                "operationId": "putFlight",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Flight id",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "description": "Flight object",
-                    "required": true,
-                    "content": {
-                        "multipart/form-data": {
-                            "schema": {
-                                "$ref": "#/components/schemas/Flight"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    }
-                },
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ]
-            },
-            "delete": {
-                "tags": [
-                    "Flights"
-                ],
-                "summary": "Delete flight",
-                "description": "delete an flight",
-                "operationId": "deleteFlight",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Flight id",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    }
-                },
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ]
-            }
-        },
-        "/regions": {
-            "get": {
-                "tags": [
-                    "Regions"
-                ],
-                "summary": "Get list of regions",
-                "description": "Returns list of regions",
-                "operationId": "getRegionsList",
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "Regions"
-                ],
-                "summary": "Store region",
-                "description": "Create new region",
-                "operationId": "postRegion",
-                "requestBody": {
-                    "description": "Region object",
-                    "required": true,
-                    "content": {
-                        "multipart/form-data": {
-                            "schema": {
-                                "$ref": "#/components/schemas/Region"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    }
-                },
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ]
-            }
-        },
-        "/regions/{region}": {
-            "get": {
-                "tags": [
-                    "Regions"
-                ],
-                "summary": "Get region information",
-                "description": "Returns region data",
-                "operationId": "getRegionById",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Region id",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "Regions"
-                ],
-                "summary": "Update region",
-                "description": "update an region",
-                "operationId": "putRegion",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Region id",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "description": "Region object",
-                    "required": true,
-                    "content": {
-                        "multipart/form-data": {
-                            "schema": {
-                                "$ref": "#/components/schemas/Region"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    }
-                },
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ]
-            },
-            "delete": {
-                "tags": [
-                    "Regions"
-                ],
-                "summary": "Delete region",
-                "description": "delete an region",
-                "operationId": "deleteRegion",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Region id",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    }
-                },
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ]
-            }
-        },
-        "/trips": {
-            "get": {
-                "tags": [
-                    "Trips"
-                ],
-                "summary": "Get list of trips",
-                "description": "Returns list of trips",
-                "operationId": "getTripsList",
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "Trips"
-                ],
-                "summary": "Store trip",
-                "description": "Create new trip",
-                "operationId": "postTrip",
-                "requestBody": {
-                    "description": "Trip object",
-                    "required": true,
-                    "content": {
-                        "multipart/form-data": {
-                            "schema": {
-                                "$ref": "#/components/schemas/Trip"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    }
-                }
-            }
-        },
-        "/trips/{trip}": {
-            "get": {
-                "tags": [
-                    "Trips"
-                ],
-                "summary": "Get trip information",
-                "description": "Returns trip data",
-                "operationId": "getTripById",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Trip id",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    }
-                }
-            }
         }
     },
     "components": {
         "schemas": {
-            "Airline": {
+            "Server": {
                 "type": "object",
                 "allOf": [
                     {
@@ -1251,115 +277,17 @@
                             "code"
                         ],
                         "properties": {
-                            "code": {},
-                            "name": {}
-                        },
-                        "type": "object"
-                    }
-                ]
-            },
-            "Airport": {
-                "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "code"
-                        ],
-                        "properties": {
-                            "code": {},
+                            "url": {},
                             "name": {},
-                            "latitude": {},
-                            "longitude": {},
-                            "timezone": {},
-                            "city_id": {}
-                        },
-                        "type": "object"
-                    }
-                ]
-            },
-            "City": {
-                "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "code"
-                        ],
-                        "properties": {
-                            "code": {},
-                            "name": {},
-                            "region_id": {}
-                        },
-                        "type": "object"
-                    }
-                ]
-            },
-            "Country": {
-                "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "code"
-                        ],
-                        "properties": {
-                            "code": {},
-                            "name": {}
-                        },
-                        "type": "object"
-                    }
-                ]
-            },
-            "Flight": {
-                "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "code"
-                        ],
-                        "properties": {
-                            "number": {},
-                            "airline_id": {},
-                            "departure_airport_id": {},
-                            "departure_time": {},
-                            "arrival_airport_id": {},
-                            "arrival_time": {},
-                            "price": {}
-                        },
-                        "type": "object"
-                    }
-                ]
-            },
-            "Region": {
-                "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "code"
-                        ],
-                        "properties": {
-                            "code": {},
-                            "name": {},
-                            "country_id": {}
-                        },
-                        "type": "object"
-                    }
-                ]
-            },
-            "Trip": {
-                "type": "object",
-                "allOf": [
-                    {
-                        "required": [
-                            "code"
-                        ],
-                        "properties": {
-                            "departure_datetime": {
-                                "type": "datetime"
-                            },
-                            "departure_airport_id": {},
-                            "arrival_airport_id": {},
-                            "preferred_airline_id": {},
-                            "is_round_trip": {
-                                "type": "boolean"
+                            "status": {
+                                "type": "string",
+                                "default": "New",
+                                "enum": [
+                                    "Up",
+                                    "Warning",
+                                    "Down",
+                                    "New"
+                                ]
                             }
                         },
                         "type": "object"
@@ -1370,7 +298,7 @@
         "securitySchemes": {
             "Authorization": {
                 "type": "apiKey",
-                "description": "Bearer TOKEN",
+                "description": "Bearer YOUR_TOKEN",
                 "name": "Authorization",
                 "in": "header"
             }

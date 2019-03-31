@@ -7,6 +7,6 @@ $factory->define(Server::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'url' => $faker->url,
-        'status' => $faker->randomKey(Server::STATUS),
+        'status' => $faker->randomElement(Server::STATUS),
     ];
 });
