@@ -43,7 +43,7 @@ Change Database connexion into .env and .env-testing
 DB_CONNECTION=mysql
 DB_HOST=db
 DB_PORT=3306
-DB_DATABASE=server_manager
+DB_DATABASE=seedbox
 DB_USERNAME=root
 DB_PASSWORD=123456
 ```
@@ -53,7 +53,7 @@ DB_PASSWORD=123456
 DB_CONNECTION=mysql
 DB_HOST=db
 DB_PORT=3306
-DB_DATABASE=server_manager_testing
+DB_DATABASE=seedbox_testing
 DB_USERNAME=root
 DB_PASSWORD=123456
 ```
@@ -85,7 +85,7 @@ Connect your DB with your favorite client
 ```
 HOST: 127.0.0.1
 PORT: 3306
-DB: server_manager
+DB: seedbox
 USER: root
 Password: 123456
 ```
