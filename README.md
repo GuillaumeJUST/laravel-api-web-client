@@ -11,7 +11,7 @@ https://docs.docker.com/compose/install/
 **Clone this repository**
 
 ```
-git clone https://github.com/guillaumejust/laravel-website-docker.git
+git clone git@github.com:GuillaumeJUST/laravel-api-web-client.git
 ```
 
 ## Installation
