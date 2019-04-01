@@ -98,7 +98,7 @@ docker-compose exec db bash
 
 ## Testing 
 
-Before running unit test you must create a database ```server_manager_testing```
+Before running unit test you must create a database ```seedbox_testing```
 
 To running Unit test
 ```
